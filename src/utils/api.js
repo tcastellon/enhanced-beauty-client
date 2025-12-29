@@ -1,11 +1,15 @@
+import { getAuthToken } from "./auth";
+
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
 async function apiRequest(endpoint, options = {}) {
     const url = `${API_BASE_URL}${endpoint}`;
+    const token = getAuthToken()
 
     const response = await fetch(url, {
         headers: {
             'Content-Type': 'application/json',
+            ...(token && { 'Authorization': `Token ${token}` }),
             ...options.headers,
         },
         ...options,
