@@ -20,7 +20,7 @@ export function useLogout() {
     const queryClient = useQueryClient()
 
     return useMutation({
-        mutationFN: async () => {
+        mutationFn: async () => {
             removeAuthToken()
         },
         onSuccess: () => {
