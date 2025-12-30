@@ -10,8 +10,14 @@ export async function loginUser(username, password) {
     })
 
     if (!response.ok) {
-        const error = await response.text()
-        throw new Error(error || 'Invalid credentials')
+        const error = await response.json()
+
+        const errorMessage = 
+            error.non_field_errors?.[0] ||
+            error.detail ||
+            'Invalid credentials'
+
+        throw new Error(errorMessage)
     }
 
     const data = await response.json()
