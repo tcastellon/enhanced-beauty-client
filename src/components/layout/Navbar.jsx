@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useLogout, useIsAuthenticated } from "../../hooks/useAuth";
 
-export default function Navbar() {
+function Navbar() {
   const logout = useLogout();
   const navigate = useNavigate();
   const isAuthenticated = useIsAuthenticated();
@@ -35,8 +35,10 @@ export default function Navbar() {
         {isAuthenticated && (
           <div className="navbar-end">
             <div className="navbar-item">
-              <button 
-                className={`button is-light ${logout.isLoading ? 'is-loading' : ''}`}
+              <button
+                className={`button is-light ${
+                  logout.isLoading ? "is-loading" : ""
+                }`}
                 onClick={handleLogout}
                 disabled={logout.isLoading}
               >
@@ -49,3 +51,5 @@ export default function Navbar() {
     </nav>
   );
 }
+
+export default Navbar;
