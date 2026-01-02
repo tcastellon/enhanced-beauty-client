@@ -1,9 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useClients } from "../hooks/useClients";
 
 function ClientsPage() {
   const { data: clients, isLoading, isError, error } = useClients();
-  const navigate = useNavigate();
 
   if (isLoading) {
     return (
