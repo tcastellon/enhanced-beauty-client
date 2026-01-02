@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useClients } from "../hooks/useClients";
 
 function ClientsPage() {
   const { data: clients, isLoading, isError, error } = useClients();
+  const navigate = useNavigate();
 
   if (isLoading) {
     return (
@@ -27,10 +28,23 @@ function ClientsPage() {
   return (
     <section className="section">
       <div className="container">
-        <h2 className="title">Clients</h2>
+        <div className="level">
+          <div className="level-left">
+            <h2 className="title">Clients</h2>
+          </div>
+          <div className="level-right">
+            <Link to="/clients/new" className="button is-primary">
+              New Client
+            </Link>
+          </div>
+        </div>
+
         <div className="columns is-multiline">
           {clients.map((client) => (
-            <div key={client.id} className="column is-one-third">
+            <div
+              key={client.id}
+              className="column is-one-third-tablet is-full-mobile"
+            >
               <Link
                 to={`/clients/${client.id}`}
                 style={{ textDecoration: "none", color: "inherit" }}

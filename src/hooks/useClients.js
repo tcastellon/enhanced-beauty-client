@@ -15,7 +15,8 @@ export function useClient(id) {
         queryKey: ['clients', id],
         queryFn: async () => {
             return await api.get(`/clients/${id}/`)
-        }
+        },
+        enabled: !!id
     })
 }
 
