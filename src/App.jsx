@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import LoginPage from "./pages/Login";
 import ClientsPage from "./pages/ClientsPage";
 import ClientDetailsPage from "./pages/ClientDetailsPage";
+import ClientFormPage from "./pages/ClientFormPage";
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
         >
           <Route index element={<Home />} />
           <Route path="clients" element={<ClientsPage />} />
+          <Route path="clients/new" element={<ClientFormPage />}/>
           <Route path="clients/:id" element={<ClientDetailsPage />} />
+          <Route path="clients/:id/edit" element={<ClientFormPage />}/>
         </Route>
         <Route path="/login" element={<LoginPage />} />
       </Routes>
