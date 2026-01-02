@@ -28,9 +28,19 @@ function ClientDetailsPage() {
     return (
         <section className="section">
             <div className="container">
-                <Link to="/clients" className="button is-light mb-4">
-                    ← Back to Clients
-                </Link>
+                <div className="level">
+                    <div>
+                        <Link to="/clients" className="button is-light mb-4">
+                            ← Back to Clients
+                        </Link>
+                    </div>
+                    <div className="buttons">
+                            <Link to={`/clients/${id}/edit`} className="button is-primary">Edit Client</Link>
+                        
+                            <Link to="/clients" className="button is-danger">
+                            Delete Client</Link>
+                    </div>
+                </div>
 
                 <div className="box">
                     <h1 className="title">{client.name}</h1>
