@@ -20,6 +20,10 @@ async function apiRequest(endpoint, options = {}) {
         throw new Error(`API Error ${response.status}: ${error || response.statusText}`);
     }
 
+    if (response.status === 204) {
+        return null;
+    }
+
     return response.json();
 }
 
