@@ -10,8 +10,8 @@ const queryClient = new QueryClient({
     queries: {
       //Length of time data stays fresh before refetching(5 min) 
       staleTime: 1000 * 60 * 5,
-      //Length of time unused data stays in cache(10 min)
-      cacheTime: 1000 * 60 * 10,
+      //Length of time unused data stays in cache(5 min)
+      cacheTime: 1000 * 60 * 5,
       //Refetch when user returns to window/tab
       refetchOnWindowFocus: true,
       //Retry failed requests up to 3 times
