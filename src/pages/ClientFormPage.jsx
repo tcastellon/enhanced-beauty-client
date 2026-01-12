@@ -1,19 +1,10 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import {
-  useClient,
-  useCreateClient,
-  useUpdateClient,
-} from "../hooks/useClients";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useCreateClient } from "../hooks/useClients";
 
 function ClientFormPage() {
-  const { id } = useParams();
   const navigate = useNavigate();
-  const isEditMode = !!id;
-
-  const { data: client } = useClient(id, { enabled: !!id });
   const createClient = useCreateClient();
-  const updateClient = useUpdateClient();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -26,21 +17,6 @@ function ClientFormPage() {
     date_of_birth: "",
   });
 
-  useEffect(() => {
-    if (isEditMode && client) {
-      setFormData({
-        name: client.name,
-        email: client.email,
-        phone_number: client.phone_number,
-        street_address: client.street_address,
-        city: client.city,
-        state: client.state,
-        zip_code: client.zip_code,
-        date_of_birth: client.date_of_birth,
-      });
-    }
-  }, [isEditMode, client]);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -52,32 +28,20 @@ function ClientFormPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (isEditMode) {
-      updateClient.mutate(
-        { id, data: formData },
-        {
-          onSuccess: () => navigate(`/clients/${id}`),
-        }
-      );
-    } else {
-      createClient.mutate(formData, {
-        onSuccess: () => navigate("/clients"),
-      });
-    }
+    createClient.mutate(formData, {
+      onSuccess: () => navigate("/clients"),
+    });
   };
 
   return (
     <section className="section">
       <div className="container">
-        <Link
-          to={isEditMode ? `/clients/${id}` : "/clients"}
-          className="button is-light mb-4"
-        >
-          ← Back to {isEditMode ? "Client" : "Clients"}
+        <Link to="/clients" className="button is-light mb-4">
+          ← Back to Clients
         </Link>
 
         <div className="box">
-          <h1 className="title">{isEditMode ? "Edit Client" : "New Client"}</h1>
+          <h1 className="title">New Client</h1>
           <hr />
 
           <form onSubmit={handleSubmit}>
@@ -196,20 +160,14 @@ function ClientFormPage() {
               <button
                 type="submit"
                 className={`button is-primary ${
-                  isEditMode
-                    ? updateClient.isPending
-                      ? "is-loading"
-                      : ""
-                    : createClient.isPending
-                    ? "is-loading"
-                    : ""
+                  createClient.isPending ? "is-loading" : ""
                 }`}
-                disabled={isEditMode ? updateClient.isPending : createClient.isPending}
+                disabled={createClient.isPending}
               >
-                {isEditMode ? "Update Client" : "Create Client"}
+                Create Client
               </button>
               <Link
-                to={isEditMode ? `/clients/${id}` : "/clients"}
+                to="/clients"
                 className="button is-light"
               >
                 Cancel
