@@ -33,10 +33,11 @@ function ClientsPage() {
           </div>
           <div className="level-right">
             <Link to="/clients/new" className="button is-primary">
-              New Client
+              + New Client
             </Link>
           </div>
         </div>
+        <hr />
 
         <div className="columns is-multiline">
           {clients.map((client) => (
