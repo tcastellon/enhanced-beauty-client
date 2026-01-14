@@ -1,20 +1,40 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { useCreateClient } from "../hooks/useClients";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { useClient, useUpdateClient } from "../hooks/useClients";
 
-function ClientFormPage() {
+function EditClientPage() {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const createClient = useCreateClient();
+  const {
+    data: client,
+    isLoading: clientLoading,
+    isError: clientError,
+  } = useClient(id);
+  const updateClient = useUpdateClient();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone_number: "",
-    street_address: "",
-    city: "",
-    state: "",
-    zip_code: "",
-    date_of_birth: "",
+  const [formData, setFormData] = useState(() => {
+    if (client) {
+      return {
+        name: client.name,
+        email: client.email,
+        phone_number: client.phone_number,
+        street_address: client.street_address,
+        city: client.city,
+        state: client.state,
+        zip_code: client.zip_code,
+        date_of_birth: client.date_of_birth,
+      };
+    }
+    return {
+      name: "",
+      email: "",
+      phone_number: "",
+      street_address: "",
+      city: "",
+      state: "",
+      zip_code: "",
+      date_of_birth: "",
+    };
   });
 
   const handleChange = (e) => {
@@ -27,21 +47,43 @@ function ClientFormPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    createClient.mutate(formData, {
-      onSuccess: () => navigate("/clients"),
-    });
+    updateClient.mutate(
+      { id, data: formData },
+      {
+        onSuccess: () => navigate(`/clients/${id}`),
+      }
+    );
   };
+
+  if (clientLoading) {
+    return (
+      <section className="section">
+        <div className="container">
+          <p>Loading client data...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (clientError) {
+    return (
+      <section className="section">
+        <div className="container">
+          <div className="notification is-danger">Error loading client</div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="section">
       <div className="container">
-        <Link to="/clients" className="button is-light mb-4">
-          ← Back to Clients
+        <Link to={`/clients/${id}`} className="button is-light mb-4">
+          ← Back to Client
         </Link>
 
         <div className="box">
-          <h1 className="title">New Client</h1>
+          <h1 className="title">Edit Client</h1>
           <hr />
 
           <form onSubmit={handleSubmit}>
@@ -160,16 +202,13 @@ function ClientFormPage() {
               <button
                 type="submit"
                 className={`button is-primary ${
-                  createClient.isPending ? "is-loading" : ""
+                  updateClient.isPending ? "is-loading" : ""
                 }`}
-                disabled={createClient.isPending}
+                disabled={updateClient.isPending}
               >
-                Create Client
+                Update Client
               </button>
-              <Link
-                to="/clients"
-                className="button is-light"
-              >
+              <Link to={`/clients/${id}`} className="button is-light">
                 Cancel
               </Link>
             </div>
@@ -180,4 +219,4 @@ function ClientFormPage() {
   );
 }
 
-export default ClientFormPage;
+export default EditClientPage;
