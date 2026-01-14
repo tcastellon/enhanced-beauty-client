@@ -11,6 +11,7 @@ import EditClientPage from "./pages/EditClientPage";
 import VisitsPage from "./pages/VisitsPage";
 import VisitFormPage from "./pages/VisitsFormPage";
 import EditVisitPage from "./pages/EditVisitPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="visits/:id/edit" element={<EditVisitPage />}/>
         </Route>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { loginUser, saveAuthToken, removeAuthToken, isAuthenticated } from "../utils/auth";
+import { loginUser, saveAuthToken, removeAuthToken, isAuthenticated, registerUser } from "../utils/auth";
 
 export function useLogin() {
     const queryClient = useQueryClient()
@@ -31,4 +31,12 @@ export function useLogout() {
 
 export function useIsAuthenticated() {
     return isAuthenticated()
+}
+
+export function useRegister() {
+    return useMutation({
+        mutationFn: async (userData) => {
+            return await registerUser(userData);
+        }
+    })
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useLogin } from "../hooks/useAuth";
 
 function LoginPage() {
@@ -76,6 +76,12 @@ function LoginPage() {
                 </div>
               </div>
             </form>
+
+            <div className="has-text-centered mt-4">
+              <p>
+                Don't have an account? <Link to="/register">Register</Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>

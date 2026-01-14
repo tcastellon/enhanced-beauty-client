@@ -24,6 +24,33 @@ export async function loginUser(username, password) {
     return data.token
 }
 
+export async function registerUser(userData) {
+    const response = await fetch(`${API_BASE_URL}/register/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData)
+    })
+
+    if (!response.ok) {
+        const error = await response.json()
+
+        const errorMessage = 
+            error.username?.[0] ||
+            error.email?.[0] ||
+            error.password?.[0] ||
+            error.non_field_errors?.[0] ||
+            error.detail ||
+            'Registration failed'
+
+        throw new Error(errorMessage)
+    }
+
+    const data = await response.json()
+    return data
+}
+
 export function saveAuthToken(token) {
     localStorage.setItem('authToken', token)
 }
