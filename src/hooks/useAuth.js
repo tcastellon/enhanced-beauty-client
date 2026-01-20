@@ -1,16 +1,17 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { loginUser, saveAuthToken, removeAuthToken, isAuthenticated, registerUser } from "../utils/auth";
+import { loginUser, saveAuthToken, removeAuthToken, isAuthenticated, registerUser, saveUserInfo } from "../utils/auth";
 
 export function useLogin() {
     const queryClient = useQueryClient()
 
     return useMutation({
         mutationFn: async ({ username, password }) => {
-            const token = await loginUser(username, password)
-            return token
+            const response = await loginUser(username, password)
+            return response
         },
-        onSuccess: (token) => {
-            saveAuthToken(token)
+        onSuccess: (response) => {
+            saveAuthToken(response.token)
+            saveUserInfo(response.user)
             queryClient.invalidateQueries()
         }
     })
