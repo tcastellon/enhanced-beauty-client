@@ -21,7 +21,7 @@ export async function loginUser(username, password) {
     }
 
     const data = await response.json()
-    return data.token
+    return data
 }
 
 export async function registerUser(userData) {
@@ -55,12 +55,22 @@ export function saveAuthToken(token) {
     localStorage.setItem('authToken', token)
 }
 
+export function saveUserInfo(userInfo) {
+    localStorage.setItem('userInfo', JSON.stringify(userInfo))
+}
+
+export function getUserInfo() {
+    const userInfo = localStorage.getItem('userInfo')
+    return userInfo ? JSON.parse(userInfo) : null
+}
+
 export function getAuthToken() {
     return localStorage.getItem('authToken')
 }
 
 export function removeAuthToken() {
     localStorage.removeItem('authToken')
+    localStorage.removeItem('userInfo')
 }
 
 export function isAuthenticated() {
