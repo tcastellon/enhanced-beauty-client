@@ -148,7 +148,7 @@ function EditVisitPage() {
           <form onSubmit={handleSubmit}>
             <div className="field">
               <label className="label">Client</label>
-              <p className="help">
+              <p className="subtitle is-5">
                 {clients?.find((c) => c.id === visit?.client)?.name ||
                   "Loading..."}
               </p>
