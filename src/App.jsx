@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
+import Layout from "./components/layout/Layout";
+import AuthenticatedRoute from "./components/AuthenticatedRoute";
+import Home from "./pages/Home";
+import LoginPage from "./pages/Login";
+import ClientsPage from "./pages/ClientsPage";
+import ClientDetailsPage from "./pages/ClientDetailsPage";
+import ClientFormPage from "./pages/ClientFormPage";
+import EditClientPage from "./pages/EditClientPage";
+import VisitsPage from "./pages/VisitsPage";
+import VisitFormPage from "./pages/VisitsFormPage";
+import EditVisitPage from "./pages/EditVisitPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <AuthenticatedRoute>
+              <Layout />
+            </AuthenticatedRoute>
+          }
+        >
+          <Route index element={<Home />} />
+          <Route path="clients" element={<ClientsPage />} />
+          <Route path="clients/new" element={<ClientFormPage />}/>
+          <Route path="clients/:id" element={<ClientDetailsPage />} />
+          <Route path="clients/:id/edit" element={<EditClientPage />}/>
+          <Route path="visits" element=
+          {<VisitsPage />}/>
+          <Route path="visits/new" element={<VisitFormPage />}/>
+          <Route path="visits/:id/edit" element={<EditVisitPage />}/>
+        </Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
