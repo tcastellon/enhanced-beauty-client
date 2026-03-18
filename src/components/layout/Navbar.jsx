@@ -42,10 +42,10 @@ function Navbar() {
 
       <div className={`navbar-menu ${isMenuOpen ? "is-active" : ""}`}>
         <div className="navbar-start">
-          <Link to="/clients" className="navbar-item">
+          <Link to="/dashboard/clients" className="navbar-item">
             Clients
           </Link>
-          <Link to="/visits" className="navbar-item">
+          <Link to="/dashboard/visits" className="navbar-item">
             Visits
           </Link>
         </div>
