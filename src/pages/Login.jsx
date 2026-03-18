@@ -15,7 +15,7 @@ function LoginPage() {
       { username, password },
       {
         onSuccess: () => {
-          navigate("/");
+          navigate("/dashboard");
         },
       }
     );
