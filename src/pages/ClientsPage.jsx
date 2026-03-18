@@ -32,7 +32,7 @@ function ClientsPage() {
             <h2 className="title">Clients</h2>
           </div>
           <div className="level-right">
-            <Link to="/clients/new" className="button is-primary">
+            <Link to="/dashboard/clients/new" className="button is-primary">
               + New Client
             </Link>
           </div>
@@ -46,7 +46,7 @@ function ClientsPage() {
               className="column is-one-third-tablet is-full-mobile"
             >
               <Link
-                to={`/clients/${client.id}`}
+                to={`/dashboard/clients/${client.id}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <div className="box" style={{ height: "100%" }}>

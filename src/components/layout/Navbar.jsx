@@ -23,7 +23,7 @@ function Navbar() {
   return (
     <nav className="navbar is-primary">
       <div className="navbar-brand">
-        <Link to="/" className="navbar-item">
+        <Link to="/dashboard" className="navbar-item">
           <strong>Enhanced Beauty</strong>
         </Link>
 

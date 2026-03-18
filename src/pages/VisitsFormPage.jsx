@@ -60,7 +60,7 @@ function VisitFormPage() {
       }
       queryClient.invalidateQueries({ queryKey: ['visits'] })
 
-      navigate(`/visits?client=${formData.client_id}`);
+      navigate(`/dashboard/visits?client=${formData.client_id}`);
     } catch (error) {
       console.error("Error creating visit:", error);
     }
@@ -79,7 +79,7 @@ function VisitFormPage() {
   return (
     <section className="section">
       <div className="container">
-        <Link to="/visits" className="button is-light mb-4">
+        <Link to="/dashboard/visits" className="button is-light mb-4">
           ← Back to Visits
         </Link>
 
@@ -170,7 +170,7 @@ function VisitFormPage() {
               >
                 Create Visit
               </button>
-              <Link to="/visits" className="button is-light">
+              <Link to="/dashboard/visits" className="button is-light">
                 Cancel
               </Link>
             </div>

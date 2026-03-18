@@ -31,7 +31,7 @@ function ClientDetailsPage() {
     if (window.confirm(`Are you sure you want to delete ${client.name}?`)) {
       deleteClient.mutate(id, {
         onSuccess: () =>
-          navigate("/clients"),
+          navigate("/dashboard/clients"),
       });
     }
   };
@@ -41,12 +41,12 @@ function ClientDetailsPage() {
       <div className="container">
         <div className="level">
           <div>
-            <Link to="/clients" className="button is-light mb-4">
+            <Link to="/dashboard/clients" className="button is-light mb-4">
               ← Back to Clients
             </Link>
           </div>
           <div className="buttons">
-            <Link to={`/clients/${id}/edit`} className="button is-primary">
+            <Link to={`/dashboard/clients/${id}/edit`} className="button is-primary">
               Edit Client
             </Link>
 
