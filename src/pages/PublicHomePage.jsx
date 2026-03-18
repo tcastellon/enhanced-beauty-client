@@ -63,15 +63,13 @@ function PublicHome() {
             <h2 className="title is-3 has-text-centered has-text-black mb-5">
               Services
             </h2>
-            <div className="columns is-multiline">
+            <ul>
               {services.map((service) => (
-                <div>
-                  <div>
-                    <p className="title is-5 has-text-black">{service.name}</p>
-                  </div>
-                </div>
+                <li key={service.id} className="box mb-3">
+                  <p className="title is-5 has-text-black">{service.name}</p>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </div>
