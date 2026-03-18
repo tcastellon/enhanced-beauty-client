@@ -70,7 +70,7 @@ function PublicHome() {
                     key={service.id}
                     className="box mb-3 has-background-white"
                   >
-                    <p className="title is-5 has-text-black">{service.name}</p>
+                    <p className="is-size-5 has-text-black">{service.name}</p>
                   </li>
                 ))}
               </ul>
