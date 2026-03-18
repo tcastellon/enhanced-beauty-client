@@ -64,16 +64,12 @@ function PublicHome() {
               Services
             </h2>
             <div className="content">
-              <ul>
-                {services.map((service) => (
-                  <li
-                    key={service.id}
-                    className="box mb-3 has-background-white"
-                  >
-                    <p className="is-size-5 has-text-black">{service.name}</p>
-                  </li>
-                ))}
-              </ul>
+              {services.map((service) => (
+                <div key={service.id}>
+                  <p className="is-size-5 has-text-black">✦ {service.name}</p>
+                  <hr className="mb-2 mt-2" />
+                </div>
+              ))}
             </div>
           </div>
         </div>
