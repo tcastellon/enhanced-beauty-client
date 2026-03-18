@@ -22,7 +22,7 @@ function VisitCard({ visit }) {
   };
 
   return (
-    <Link to={`/visits/${visit.id}/edit`} style={{ textDecoration: "none", color: "inherit" }}>
+    <Link to={`/dashboard/visits/${visit.id}/edit`} style={{ textDecoration: "none", color: "inherit" }}>
       <div className="box" style={{ height: "100%" }}>
         <h2 className="subtitle">{formatDate(visit.visit_date)}</h2>
         <hr />
