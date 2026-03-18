@@ -57,18 +57,40 @@ function PublicHome() {
           </div>
         </div>
       </div>
-      <div className="container mt-6">
-        <div className="columns is-centered">
-          <div className="column is-8">
-            <h2 className="title is-3 has-text-centered has-text-black mb-5">
-              Services
-            </h2>
+      <div className="container mt-6 mb-6">
+        <div className="columns">
+          {/* Services Column */}
+          <div className="column is-6">
+            <h2 className="title is-3 has-text-black mb-5">Services</h2>
             <div className="content">
               {services.map((service) => (
-                <div key={service.id}>
+                <div key={service.id} className="mb-4">
                   <p className="is-size-5 has-text-black">✦ {service.name}</p>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Contact Column */}
+          <div className="column is-6">
+            <h2 className="title is-3 has-text-black mb-5">Get In Touch</h2>
+            <div className="content">
+              <div className="mb-4">
+                <p className="is-size-5 has-text-black">📞 (931) 472-8524</p>
+              </div>
+              <div className="mb-4">
+                <p className="is-size-5 has-text-black">✉️ enhancedbeautybylucy@gmail.com</p>
+              </div>
+              <div className="mb-4">
+                <a
+                  href="https://www.instagram.com/enhancedbeautybylucy/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="is-size-5 has-text-black"
+                >
+                  📷 @enhancedbeautybylucy
+                </a>
+              </div>
             </div>
           </div>
         </div>
