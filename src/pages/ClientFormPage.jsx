@@ -29,14 +29,14 @@ function ClientFormPage() {
     e.preventDefault();
 
     createClient.mutate(formData, {
-      onSuccess: () => navigate("/clients"),
+      onSuccess: () => navigate("/dashboard/clients"),
     });
   };
 
   return (
     <section className="section">
       <div className="container">
-        <Link to="/clients" className="button is-light mb-4">
+        <Link to="/dashboard/clients" className="button is-light mb-4">
           ← Back to Clients
         </Link>
 
@@ -167,7 +167,7 @@ function ClientFormPage() {
                 Create Client
               </button>
               <Link
-                to="/clients"
+                to="/dashboard/clients"
                 className="button is-light"
               >
                 Cancel

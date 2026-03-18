@@ -57,7 +57,7 @@ function VisitsPage() {
             <div className="level-item">
               <button
                 className="button is-primary"
-                onClick={() => navigate("/visits/new")}
+                onClick={() => navigate("/dashboard/visits/new")}
               >
                 + New Visit
               </button>

@@ -70,7 +70,7 @@ function EditVisitPage() {
       };
 
       await updateVisit.mutateAsync({ id, data: visitData });
-      navigate(`/visits?client=${visit.client}`);
+      navigate(`/dashboard/visits?client=${visit.client}`);
     } catch (error) {
       console.error("Error updating visit:", error);
     }
@@ -84,7 +84,7 @@ function EditVisitPage() {
     ) {
       try {
         await deleteVisit.mutateAsync(id);
-        navigate(`/visits?client=${visit.client}`);
+        navigate(`/dashboard/visits?client=${visit.client}`);
       } catch (error) {
         console.error("Error deleting visit:", error);
       }
@@ -118,7 +118,7 @@ function EditVisitPage() {
           <div className="level-left">
             <div className="level-item">
               <Link
-                to={`/visits?client=${visit?.client}`}
+                to={`/dashboard/visits?client=${visit?.client}`}
                 className="button is-light"
               >
                 ← Back to Visits
@@ -208,7 +208,7 @@ function EditVisitPage() {
                 Update Visit
               </button>
               <Link
-                to={`/visits?client=${visit?.client}`}
+                to={`/dashboard/visits?client=${visit?.client}`}
                 className="button is-light"
               >
                 Cancel

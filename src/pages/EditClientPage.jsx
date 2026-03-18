@@ -50,7 +50,7 @@ function EditClientPage() {
     updateClient.mutate(
       { id, data: formData },
       {
-        onSuccess: () => navigate(`/clients/${id}`),
+        onSuccess: () => navigate(`/dashboard/clients/${id}`),
       }
     );
   };
@@ -78,7 +78,7 @@ function EditClientPage() {
   return (
     <section className="section">
       <div className="container">
-        <Link to={`/clients/${id}`} className="button is-light mb-4">
+        <Link to={`/dashboard/clients/${id}`} className="button is-light mb-4">
           ← Back to Client
         </Link>
 
@@ -208,7 +208,7 @@ function EditClientPage() {
               >
                 Update Client
               </button>
-              <Link to={`/clients/${id}`} className="button is-light">
+              <Link to={`/dashboard/clients/${id}`} className="button is-light">
                 Cancel
               </Link>
             </div>
