@@ -67,7 +67,6 @@ function PublicHome() {
               {services.map((service) => (
                 <div key={service.id}>
                   <p className="is-size-5 has-text-black">✦ {service.name}</p>
-                  <hr className="mb-2 mt-2" />
                 </div>
               ))}
             </div>
