@@ -63,7 +63,7 @@ function PublicHome() {
             <h2 className="title is-3 has-text-centered has-text-black mb-5">
               Services
             </h2>
-            <ul>
+            <ul className="content">
               {services.map((service) => (
                 <li key={service.id} className="box mb-3 has-background-white">
                   <p className="title is-5 has-text-black">{service.name}</p>
