@@ -77,11 +77,11 @@ function LoginPage() {
               </div>
             </form>
 
-            <div className="has-text-centered mt-4">
+            {/* <div className="has-text-centered mt-4">
               <p>
                 Don't have an account? <Link to="/register">Register</Link>
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
