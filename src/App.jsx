@@ -38,7 +38,7 @@ function App() {
           <Route path="visits/:id/edit" element={<EditVisitPage />} />
         </Route>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        {/* <Route path="/register" element={<RegisterPage />} /> */}
       </Routes>
     </BrowserRouter>
   );
